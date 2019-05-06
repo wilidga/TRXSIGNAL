@@ -1,0 +1,78 @@
+<app-header titulo="MARKET"></app-header>
+<ion-toolbar>
+    <!-- Default Segment -->
+    <ion-segment (ionChange)="segmentChanged($event)" color="tertiary" [(ngModel)]="markets">
+        <ion-segment-button value="BANCOR">
+            <ion-label>BANCOR</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="MARKET">
+            <ion-label>MARKET</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</ion-toolbar>
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <!-- <div *ngIf="this.valorSegmento === 'BANCOR'; else elseBlock"> -->
+
+    <ion-list *ngIf="this.valorSegmento === 'BANCOR'">
+        <!-- <ion-item *ngFor="let token of tokensBancor " class="animated fadeIn fast"> -->
+        <ion-item *ngFor="let token of tokensBancor ">
+            <ion-label color="primary">
+                <!-- <h3>{{ token.gain }} <small> {{ token.price | currencyFormat: token.sPrecision }} </small></h3> -->
+                <h3>
+                    {{ token.exchange_abbr_name }}
+                </h3>
+
+            </ion-label>
+
+            <ion-label slot="end">
+                <h3> price: {{ token.price }}
+                </h3>
+
+            </ion-label>
+            <ion-label color="success" slot="end" text-right *ngIf="token.up_down_percent >= 0">
+                <h3>{{ token.up_down_percent | number : '1.2-2'}} %</h3>
+            </ion-label>
+            <ion-label color="danger" slot="end" text-right *ngIf="token.up_down_percent < 0">
+                <h3>{{ token.up_down_percent | number : '1.2-2'}} % </h3>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-list *ngIf="this.valorSegmento != 'BANCOR'">
+        <!-- <ion-item *ngFor="let token of tokensMarket " class="animated fadeIn fast"> -->
+        <ion-item *ngFor="let token of tokensMarket ">
+            <ion-label color="primary">
+                <!-- <h3>{{ token.gain }} <small> {{ token.price | currencyFormat: token.sPrecision }} </small></h3> -->
+                <h3>
+                    {{ token.fShortName }} / {{ token.sTokenName }}
+                </h3>
+
+            </ion-label>
+
+            <ion-label slot="end">
+                <h3> price: {{ token.price | currencyFormat: token.sPrecision }}
+                </h3>
+
+            </ion-label>
+            <ion-label color="success" slot="end" text-right *ngIf="token.gain >= 0">
+                <h3>{{ token.gain * 100 | number : '1.2-2' }} %</h3>
+            </ion-label>
+            <ion-label color="danger" slot="end" text-right *ngIf="token.gain < 0">
+                <h3>{{ token.gain * 100 | number : '1.2-2'}}%</h3>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,56 @@
+<!-- <ion-card>
+    <ion-card-header>
+        <ion-card-subtitle>
+            <span class="text-primary"> {{ indice + 1}}. </span>
+            <span class="noticia-source-name">{{ token.name}}</span>
+
+            <div class="noticia-more">
+                <ion-button fill="clear" (click)="lanzarMenu()">
+                    <ion-icon slot="icon-only" name="more"></ion-icon>
+                </ion-button>
+
+            </div>
+        </ion-card-subtitle>
+        <ion-card-title (click)="abrirToken()">{{token.abbr}}</ion-card-title>
+    </ion-card-header>
+    <ion-img *ngIf="token.imgUrl" [src]="token.imgUrl" (click)="abrirToken()">
+
+    </ion-img>
+    <ion-card-content>
+        <p>
+            {{ token.url}}
+        </p>
+        <br>
+        <p>
+            {{ token.description }}
+        </p>
+    </ion-card-content>
+</ion-card> -->
+
+
+<ion-card color="dark">
+    <ion-img *ngIf="token.imgUrl" [src]="token.imgUrl" (click)="abrirToken()"> </ion-img>
+    <ion-card-header>
+        <ion-card-title (click)="abrirToken()">{{token.abbr}}</ion-card-title>
+        <ion-card-subtitle>
+            <span class="text-primary"> {{ indice + 1}}. </span>
+            <span class="noticia-source-name">{{ token.name}}</span>
+
+            <div class="noticia-more">
+                <ion-button fill="clear" (click)="lanzarMenu()">
+                    <ion-icon slot="icon-only" name="more"></ion-icon>
+                </ion-button>
+
+            </div>
+        </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+        <p>
+            {{ token.url}}
+        </p>
+        <br>
+        <p>
+            {{ token.description }}
+        </p>
+    </ion-card-content>
+</ion-card>

@@ -1,0 +1,7 @@
+{
+  "name": "TronTrader",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
